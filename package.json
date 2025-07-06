@@ -1,0 +1,23 @@
+{
+  "name": "brackets",
+  "version": "1.0.0",
+  "description": "JS Training",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asya-space/brackets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asya-space/brackets/issues"
+  },
+  "homepage": "https://github.com/asya-space/brackets#readme",
+  "devDependencies": {
+    "mocha": "^11.7.1"
+  }
+}
