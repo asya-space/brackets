@@ -1,17 +1,28 @@
 function check(brackets, bracketsConfig) {
-  const stack = [],
-        bracketsMap = new Map(bracketsConfig),
-        reverseBracket = new Map();
-  for(let [open, close] of bracketsConfig) {
-    reverseBracket.set(close, open);
+  const configMap = new Map(bracketsConfig),
+        reverseMap = new Map(),
+        stack = [];
+  for(let [open, close] of configMap) {
+    reverseMap.set(close, open);
   }
-  for(const el of brackets) {
-    if(bracketsMap.has(el)) {
+  for(let el of brackets) {
+    const opened = configMap.has(el),
+          closed = reverseMap.has(el);
+    if(opened && reverseMap.get(el) === el) {
+      if(stack[stack.length-1] === el) {
+        stack.pop()
+      } else {
+        stack.push(el);
+      }
+    }
+    else if(configMap.has(el)) {
       stack.push(el)
     } else {
       const last = stack.pop();
-      if(reverseBracket.get(el) !== last) return false;
-   }
+      if(reverseMap.get(el) !== last) {
+        return false;
+      }
+    }
   }
   return stack.length === 0;
 }
